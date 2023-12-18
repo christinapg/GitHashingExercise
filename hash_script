@@ -1,0 +1,14 @@
+#!/bin/bash
+
+string="$1"
+# Check if the correct number of arguments is provided
+if [ "${#string}" -ne 4 ] || ! [[ $string =~ ^[0-9]+$ ]]; then
+    # Script Usage
+    echo "Usage: $0 <4-digit-integer>"
+    exit 1
+fi
+# Hash the input using sha256sum
+hash=$(echo -n "$string" | sha256sum)
+echo "$hash"
+
+
